@@ -1,0 +1,27 @@
+apiVersion : skaffold/v2beta12
+kind : Config
+metadata : 
+  name : project
+build : 
+  artifacts :
+    - image : dockertreya/auth
+      context : auth 
+      docker :
+        dockerfile : Dockerfile
+      sync : 
+        manual : 
+          - src : 'src/**/*.ts'
+            dest : .
+    - image : dockertreya/client
+      context : client
+      docker :
+        dockerfile : Dockerfile
+      sync : 
+        manual : 
+          - src : '**/*.ts'
+            dest : .
+deploy : 
+  kubectl :
+    manifests :
+      - ./infra/k8s/*
+
