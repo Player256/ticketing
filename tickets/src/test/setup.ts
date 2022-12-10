@@ -4,9 +4,8 @@ import request from 'supertest';
 import { app } from '../app';
 
 declare global {
-  var signin: () => string[];
+  var signin: (id?: string) => string[];
 }
-
 
 let mongo: any;
 beforeAll(async () => {

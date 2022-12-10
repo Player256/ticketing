@@ -1,16 +1,16 @@
 apiVersion : apps/v1
 kind : Deployment
 metadata :
-  name : nats
+  name : nats-depl
 spec : 
   replicas : 1
   selector : 
     matchLabels : 
-      app : nats
+      app : nats-depl
   template : 
     metadata : 
       labels : 
-        app : nats
+        app : nats-depl
     spec : 
       containers: 
         - name : nats

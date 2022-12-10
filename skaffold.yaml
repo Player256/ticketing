@@ -28,6 +28,31 @@ build :
         manual :
           - src : 'src/**/*.ts'
             dest : .
+    - image : dockertreya/orders
+      context : orders
+      docker :
+        dockerfile : Dockerfile
+      sync :
+        manual :
+          - src : 'src/**/*.ts'
+            dest : .
+    - image: dockertreya/expiration
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: dockertreya/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+      
 deploy : 
   kubectl :
     manifests :
